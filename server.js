@@ -7,7 +7,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.get('/', function(req, res) {
-    res.send('Servidor Iniciado')
+    res.send('Servidor Iniciado server')
 });
 
 
