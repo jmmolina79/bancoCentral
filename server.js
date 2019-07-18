@@ -20,5 +20,5 @@ app.get('/tutor', function(req, res) {
 });
 
 app.listen(3000, function(){
-    console.log('servidor corriendo en el puerto 3.000')
+    console.log('servidor en el puerto 3.000')
 })
