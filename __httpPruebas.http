@@ -1,9 +1,11 @@
 ###
-POST https://kupi.com.co/ws/doPayPinApp
-codEmpresa: 113
-codVendedor: 52
-pinTransaccion: 9529
-numIdentificacion: 94150555
+POST http://localhost:3500/personas
+nombre: 113
+edad: 52
 
+###
+POST http://env-7738273.jelastic.saveincloud.net/personas
+nombre: 113
+edad: 52
 ###
 https://kupi.com.co/ws/getPruebaJM

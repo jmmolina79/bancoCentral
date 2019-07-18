@@ -19,10 +19,11 @@ module.exports = (app) => {
     app.post('/personas', (req, res)=> {
         let nombre = req.body.nombre;
         let edad = req.body.edad;
-        let )miPersona = {
-            'elNombre' : nombre;
-            'laEdad': edad     }
-    res.send(miPersona);
+        let miPersona = {
+            'elNombre' : 'nombre',
+            'laEdad': 'edad'     
+        }
+        res.send(miPersona);
     });
 
 
