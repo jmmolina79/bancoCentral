@@ -17,7 +17,7 @@ app.get('/estudiantes', function(req, res) {
 
 app.get('/tutor', function(req, res) {
     res.send('En clase hay 1 tutor')
-});
+}); 
 
 app.listen(3000, function(){
     console.log('servidor corriendo en el puerto 3.000')
