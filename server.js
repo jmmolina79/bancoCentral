@@ -1,24 +1,16 @@
 const express = require('express')
 const bodyParser = require('body-parser')
+
+// Instanciamos express
 const app = express()
 
 // Body Parser
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-app.get('/', function(req, res) {
-    res.send('Servidor Iniciado server')
-});
+require('./api/router.js')(app);
 
-
-app.get('/estudiantes', function(req, res) {
-    res.send('Hay 23 estudiantes')
-});
-
-app.get('/tutor', function(req, res) {
-    res.send('En clase hay 1 tutor')
-});
-
-app.listen(3000, function(){
-    console.log('servidor en el puerto 3.000')
+// Iniciamos el servidor
+app.listen(3500, function(){
+    console.log('servidor en el puerto 3.500')
 })
