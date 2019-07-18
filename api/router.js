@@ -15,4 +15,15 @@ module.exports = (app) => {
     app.get('/tutor', function(req, res) {
         res.send('En clase hay 1 tutor')
     });
+
+    app.post('/personas', (req, res)=> {
+        let nombre = req.body.nombre;
+        let edad = req.body.edad;
+        let )miPersona = {
+            'elNombre' : nombre;
+            'laEdad': edad     }
+    res.send(miPersona);
+    });
+
+
 }
