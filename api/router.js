@@ -27,4 +27,16 @@ module.exports = (app) => {
     });
 
 
+    app.get('/usuarios', (req, res) => {
+        $sql = `SELECT * FROM usuarios  `;
+        
+        mysqlConnection.query($sql, (err, rows, fields) => {
+          if(!err) {
+            res.json(rows);
+          } else {
+            console.log(err);
+          }
+        });  
+      });
+
 }
