@@ -46,7 +46,7 @@ class Cliente {
 
        let query = `SELECT * 
                     FROM table.name 
-                    WHERE table.fields.id = id`; 
+                    WHERE table.fields.id = ${id}`; 
        
         //Verificamos la conexion
         if(sql){
