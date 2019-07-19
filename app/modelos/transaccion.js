@@ -39,7 +39,7 @@ class Transaccion {
         return mp;
     }
     //Funcion que consulta un cliente segun el id de la base de datos
-    static consultarCliente(id, callback) {
+    static consultarTransaccion(id, callback) {
         //Armamos la consulta segn los parametros que necesitemos
 
         let query = 'SELECT * ';
@@ -69,7 +69,7 @@ class Transaccion {
         } 
     }
     //Funcion encargada de consultar todos los clientes de la base de datos
-    static consultarTransaccion(callback) {
+    static consultarTransacciones(callback) {
         //Armamos la consulta segn los parametros que necesitemos
         let query = 'SELECT * ';
         query += 'FROM '+table.name+';';   
@@ -94,4 +94,4 @@ class Transaccion {
     }
 }
 
-module.exports = Cliente;
+module.exports = Transaccion;
