@@ -38,15 +38,17 @@ class Cliente {
     //Funcion que consulta un cliente segun el id de la base de datos
     static consultarCliente(id, callback) {
         //Armamos la consulta segn los parametros que necesitemos
-        /*
+
         let query = 'SELECT * ';
         query += 'FROM '+table.name+' ';
         query += 'WHERE '+table.fields.id+'='+id+';'; 
-        */
 
+        
+        /*
        let query = `SELECT * 
                     FROM table.name 
                     WHERE table.fields.id = ${id}`; 
+        */
        
         //Verificamos la conexion
         if(sql){
