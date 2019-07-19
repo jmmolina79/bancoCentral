@@ -13,12 +13,12 @@ module.exports = (app) => {
 
     //Recurso transacciones encargado de consultar un cliente segun el id en base de datos
     app.get('/transacciones/:id', function(req, res) { 
-        ClienteControlador.consultaTransaccion(req, res);
+        TransaccionControlador.consultaTransaccion(req, res);
     });
 
     //Recurso transacciones encargado de consultar todos los transacciones de la base de datos
     app.get('/transacciones', function(req, res){
-        ClienteControlador.consultaTransacciones(req, res);
+        TransaccionControlador.consultaTransacciones(req, res);
     });
 
 
