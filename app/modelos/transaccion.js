@@ -42,17 +42,17 @@ class Transaccion {
     static consultarTransaccion(id, callback) {
         //Armamos la consulta segn los parametros que necesitemos
 
+        /*
         let query = 'SELECT * ';
         query += 'FROM '+table.name+' ';
         query += 'WHERE '+table.fields.id+'='+id+';'; 
-
-        
-        /*
-       let query = `SELECT * 
-                    FROM table.name 
-                    WHERE table.fields.id = ${id}`; 
         */
-       
+        
+       let query = `SELECT * 
+                    FROM ${table.name} 
+                    WHERE ${table.fields.id} = ${id}`; 
+
+                    
         //Verificamos la conexion
         if(sql){
             sql.query(query, (err, result) => {
