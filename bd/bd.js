@@ -5,8 +5,8 @@ class DB {
         if(!DB.instancia){
             DB.instancia = this;
             this.connection = mysql.createConnection({
-                //host: 'localhost',
-                host: 'http://env-3847167.jelastic.saveincloud.net/',
+                host: 'localhost',
+                //host: 'http://env-3847167.jelastic.saveincloud.net/',
                 user: 'root',
                 password: 'MOXcag22916',
                 //password: '',
