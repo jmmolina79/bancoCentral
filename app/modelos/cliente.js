@@ -65,6 +65,8 @@ class Cliente {
             throw "Problema conectado con Mysql en consultarCliente";
         } 
     }
+
+
     //Funcion encargada de consultar todos los clientes de la base de datos
     static consultarClientes(callback) {
         //Armamos la consulta segn los parametros que necesitemos
@@ -89,6 +91,34 @@ class Cliente {
             throw "Problema conectado con Mysql";
         } 
     }
+
+
+    //Funcion que consulta un cliente segun el id de la base de datos
+    static insertarCliente(param, callback) {
+        //Armamos la consulta segn los parametros que necesitemos
+
+        let query = `INSERT INTO ${table.name} 
+                    ( nombre_cliente, documento_cliente, profesion_cliente )
+                    VALUES
+                    ( ${param.nombre},${param.documento},${param.profesion} )`; 
+
+                    
+        //Verificamos la conexion
+        if(sql){
+            sql.query(query, (err, result) => {
+                if(err){
+                    throw err;
+                }else{     
+                    let cliente = Cliente.mapFactory(result[0]);                                                                                          
+                    console.log(cliente);                          
+                    callback(null,cliente);
+                }
+            })
+        }else{
+            throw "Problema conectado con Mysql en consultarCliente";
+        } 
+    }
+
 }
 
 module.exports = Cliente;

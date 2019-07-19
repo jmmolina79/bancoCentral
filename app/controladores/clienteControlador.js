@@ -7,23 +7,37 @@ class ClienteControlador {
     consultaCliente(req, res) {
         let id = req.params.id;
         Cliente.consultarCliente(id, (err, data) => {
-                if(data){
-                    res.json(data);
-                }else{
-                    res.send(err);
-                }
-            })
+            if(data){
+                res.json(data);
+            }else{
+                res.send(err);
+            }
+        })
     }
+
     // Funcion encargada de manejar al consulta de todos los clientes de la base de datos
     consultaClientes(req, res) {
         Cliente.consultarClientes((err, data) => {
-                if(data){
-                    res.json(data);
-                }else{
-                    res.send(err);
-                }
-            })
+            if(data){
+                res.json(data);
+            }else{
+                res.send(err);
+            }
+        })
     }  
+
+    //Funcion encargada de manejar la consulta de un cliente por id
+    insertaCliente(req, res) {
+        let param = req.params.param;
+        Cliente.insertarCliente(param, (err, data) => {
+            if(data){
+                res.json(data);
+            }else{
+                res.send(err);
+            }
+        })
+    }
+
 }
 const instanciaControlador = new ClienteControlador();
 module.exports  = instanciaControlador;

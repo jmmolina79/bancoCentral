@@ -48,7 +48,7 @@ class Transaccion {
         query += 'WHERE '+table.fields.id+'='+id+';'; 
         */
         
-       let query = `SELECT * 
+        let query = `SELECT * 
                     FROM ${table.name} 
                     WHERE ${table.fields.id} = ${id}`; 
 

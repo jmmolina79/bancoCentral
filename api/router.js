@@ -23,6 +23,11 @@ module.exports = (app) => {
     });
 
 
+    //Recurso transacciones encargado de consultar todos los transacciones de la base de datos
+    app.post('/transacciones', function(req, res){
+        TransaccionControlador.insertaTransacciones(req, res);
+    });
+
 //Recurso raiz que me devuelve un json con la estructura de una persona
 app.get('/', function (req, res) {
     let persona = {
