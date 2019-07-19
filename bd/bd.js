@@ -1,52 +1,39 @@
 const mysql = require('mysql');
-
+//Creamos clase encargada de conectar a la base de datos MYSQL o MARIADB
 class DB {
     constructor(){
+        //Verificamos la existencia de alguna instancia en la base de datos
         if(!DB.instancia){
             DB.instancia = this;
+            //Agregamos los parametros de conexion
             this.connection = mysql.createConnection({
-                //host: 'localhost',
-                host: 'node34581-env-3847167.jelastic.saveincloud.net',
-                user: 'root',
-                password: 'MOXcag22916',
-                //password: '',
-                database: 'node_mysql',
-                //port: 3000             
+                /*
+                host     : '127.0.0.1',
+                user     : 'FULLSTACK',
+                password : 'FULLSTACK',
+                database : 'flexcube'
+                */
+               host: 'node34581-env-3847167.jelastic.saveincloud.net',
+               user: 'root',
+               password: 'MOXcag22916',
+               database: 'node_mysql',
+
             });
+            //conectamos y manejamos la conexion con throw
             this.connection.connect((err) => {
-                if(err) throw err
+                if (err) throw err;    
+                //console.log('Fallo la cone!');
             });
-            console.log('Entro a conectar');
+            //console.log('Entro a conectar!!');
         }
-        // Si existe la instancia
-        console.log('Encontro una instancia de conexion')
+        //si existe la instancia que retorne la misma
+        //console.log('Encontro una instancia de cone');
         return DB.instancia;
     }
 }
-
-// Creamos una instancia de la clase
+//creamos una instancia de la clase
 const instancia = new DB();
-
-// Por sehguridad 
+//Por seguridad  por medio del freeze congelamos los parametros de cada instancia para evitar la inyeccion sql
 Object.freeze(instancia);
-
+//Hacemos visible el modulo
 module.exports = instancia;
-
-
-/*
-const connection = mysql.createConnection({
-   host: 'localhost',
-   user: 'root',
-   password: '',
-   database: 'node_mysql',
-   port: 3000
-});
-connection.connect(function(error){
-   if(error){
-      throw error;
-   }else{
-      console.log('Conexion correcta.');
-   }
-});
-connection.end();
-*/
