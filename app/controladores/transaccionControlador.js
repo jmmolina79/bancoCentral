@@ -7,22 +7,22 @@ class TransaccionControlador {
     consultaTransaccion(req, res) {
         let id = req.params.id;
         Transaccion.consultarTransaccion(id, (err, data) => {
-                if(data){
-                    res.json(data);
-                }else{
-                    res.send(err);
-                }
-            })
+            if(data){
+                res.json(data);
+            }else{
+                res.send(err);
+            }
+        })
     }
     // Funcion encargada de manejar al consulta de todos los Transaccions de la base de datos
     consultaTransacciones(req, res) {
         Transaccion.consultaTransacciones((err, data) => {
-                if(data){
-                    res.json(data);
-                }else{
-                    res.send(err);
-                }
-            })
+            if(data){
+                res.json(data);
+            }else{
+                res.send(err);
+            }
+        })
     }  
 }
 const instanciaControlador = new TransaccionControlador();
