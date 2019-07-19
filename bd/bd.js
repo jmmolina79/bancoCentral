@@ -7,7 +7,7 @@ class DB {
             this.connection = mysql.createConnection({
                 host: 'localhost',
                 user: 'root',
-                password: '',
+                password: 'MOXcag22916',
                 database: 'node_mysql',
                 //port: 3000             
             });
