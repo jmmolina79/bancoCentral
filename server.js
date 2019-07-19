@@ -9,6 +9,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 require('./api/router.js')(app);
+const db = require('./bd/bd');
+bodyParser.connection;
 
 // Iniciamos el servidor
 app.listen(3500, function(){
