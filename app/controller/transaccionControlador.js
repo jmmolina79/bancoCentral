@@ -1,4 +1,4 @@
-let Transaccion = require('../modelos/transaccion.js');//IMportamos la clase modelo
+let Transaccion = require('../models/transaccion.js');//IMportamos la clase modelo
 //Creamos la clase controladora para manjar la informacion de los Transaccions
 class TransaccionControlador {
     constructor() {   
@@ -14,6 +14,7 @@ class TransaccionControlador {
             }
         })
     }
+
     // Funcion encargada de manejar al consulta de todos los Transaccions de la base de datos
     consultaTransacciones(req, res) {
         Transaccion.consultarTransacciones((err, data) => {
@@ -24,6 +25,17 @@ class TransaccionControlador {
             }
         })
     }  
+
+    insert(req, res) {
+        Transaccion.insertarTransaccion(req,(err, data) => {
+            if(data){
+                res.json(data);
+            }else{
+                res.send(err);
+            }
+        })
+    }  
+    
 }
 const instanciaControlador = new TransaccionControlador();
 module.exports  = instanciaControlador;

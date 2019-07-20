@@ -92,6 +92,43 @@ class Transaccion {
             throw "Problema conectado con Mysql";
         } 
     }
+
+
+    //Insertar Cliente
+    static insertarTransaccion(req, callback) {
+        const { cliente, cuenta, movimiento, valor } = req.body;
+
+        //Armamos la consulta segn los parametros que necesitemos
+        let query = `INSERT IGNORE INTO ${table.name} 
+                    ( fk_id_cliente, fk_id_cuenta, tipo_tr, monto )
+                    VALUES
+                    ( '${cliente}', '${cuenta}', '${movimiento}', '${valor}' )`; 
+
+        //Verificamos la conexion
+        if(sql){
+            sql.query(query, (err, result) => {
+                //console.log(result);                          
+                if(err){
+                    throw err;
+                }else{
+                    if (result.affectedRows) {
+                        var respuesta = {
+                            "status": true,
+                            "mensaje": "Se Insertaron " + result.affectedRows +" Registros",
+                            "insertId": result.insertId,
+                        };
+                    } else {
+                        var respuesta = 'No hubo cambios en la BD';
+                    }
+                    callback(null,respuesta);
+                }
+            })
+        }else{
+            throw "Problema conectado con Mysql en consultarCliente";
+        } 
+    }
+
+
 }
 
 module.exports = Transaccion;

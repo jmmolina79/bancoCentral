@@ -22,6 +22,7 @@ class Cliente {
         this.documento  = documento;
         this.profesion  = profesion;
     }
+
     //Funcion encargada de Mapear los campos de la base de datos en el orden que estan segun la super clase, con el fin de enmascarar los campos de la base de datos
     static mapFactory(entity){
         let mp = {};
@@ -35,6 +36,7 @@ class Cliente {
         }        
         return mp;
     }
+    
     //Funcion que consulta un cliente segun el id de la base de datos
     static consultarCliente(id, callback) {
         //Armamos la consulta segn los parametros que necesitemos
@@ -94,28 +96,71 @@ class Cliente {
 
 
     //Funcion que consulta un cliente segun el id de la base de datos
-    static insertarCliente(param, callback) {
-        //Armamos la consulta segn los parametros que necesitemos
+    static insertarCliente(req, callback) {
+        const { nombres, documento, profesion } = req.headers;
 
-        let query = `INSERT INTO ${table.name} 
+        //Armamos la consulta segn los parametros que necesitemos
+        let query = `INSERT IGNORE INTO ${table.name} 
                     ( nombre_cliente, documento_cliente, profesion_cliente )
                     VALUES
-                    ( ${param.nombre},${param.documento},${param.profesion} )`; 
+                    ( '${nombres}','${documento}','${profesion}' )`; 
 
-                    
+        //Verificamos la conexion
+        if(sql){
+            sql.query(query, (err, result) => {
+                //console.log(result);                          
+                if(err){
+                    throw err;
+                }else{
+                    if (result.affectedRows) {
+                        var respuesta = {
+                            "status": true,
+                            "mensaje": "Se Insertaron " + result.affectedRows +" Registros",
+                            "insertId": result.insertId,
+                        };
+                    } else {
+                        var respuesta = 'No hubo cambios en la BD';
+                    }
+                    callback(null,respuesta);
+                }
+            })
+        }else{
+            throw "Problema conectado con Mysql en consultarCliente";
+        } 
+    }
+
+
+    static actualizarCliente(req, callback) {
+        const { id } = req.params;
+        const { nombres, documento, profesion } = req.body;
+
+        //Armamos la consulta segn los parametros que necesitemos
+        let query = `UPDATE ${table.name} 
+                    SET nombre_cliente = '${nombres}', 
+                        documento_cliente = '${documento}', 
+                        profesion_cliente = '${profesion}'
+                    WHERE id_cliente = '${id}' `;
+
         //Verificamos la conexion
         if(sql){
             sql.query(query, (err, result) => {
                 if(err){
                     throw err;
-                }else{     
-                    let cliente = Cliente.mapFactory(result[0]);                                                                                          
-                    console.log(cliente);                          
-                    callback(null,cliente);
+                }else{
+                    if (result.affectedRows) {
+                        var respuesta = {
+                            "status": true,
+                            "mensaje": "Se Actualizaron " + result.affectedRows +" Registros",
+                        };
+                    } else {
+                        var respuesta = 'No hubo cambios en la BD';
+                    }
+                    console.log(respuesta);                          
+                    callback(null,respuesta);
                 }
             })
         }else{
-            throw "Problema conectado con Mysql en consultarCliente";
+            throw "Problema conectado con Mysql.";
         } 
     }
 

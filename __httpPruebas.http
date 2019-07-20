@@ -1,7 +1,21 @@
 ###
-POST http://localhost:3500/personas
-nombre: 113
-edad: 52
+POST http://localhost:9000/clientes
+nombres: Juan
+documento: Manuel
+profesion: Molina
+
+###
+PUT http://localhost:9000/clientes/15
+content-type: application/json
+{
+    "nombres": "Juan Manuel",
+    "documento": "94150555",
+    "profesion": "Dev"
+}
+
+###
+http://localhost:9000/clientes
+
 
 ###
 POST http://env-7738273.jelastic.saveincloud.net/personas
