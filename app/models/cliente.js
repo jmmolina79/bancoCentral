@@ -97,7 +97,7 @@ class Cliente {
 
     //Funcion que consulta un cliente segun el id de la base de datos
     static insertarCliente(req, callback) {
-        const { nombres, documento, profesion } = req.headers;
+        const { nombres, documento, profesion } = req.body;
 
         //Armamos la consulta segn los parametros que necesitemos
         let query = `INSERT IGNORE INTO ${table.name} 
