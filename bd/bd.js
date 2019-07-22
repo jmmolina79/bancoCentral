@@ -19,9 +19,9 @@ class DB {
                 });
             } else {
                 this.connection = mysql.createConnection({
-                    host: 'node34581-env-3847167.jelastic.saveincloud.net',
+                    host: 'node18901-jmmolina79.west1-us.cloudjiffy.net',
                     user: 'root',
-                    password: 'MOXcag22916',
+                    password: 'kZQ2ogyOo7',
                     database: 'node_mysql',                    
                 });
             }
